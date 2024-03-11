@@ -28,17 +28,35 @@ var details = function () { return ({
             number: 3,
             tooltip: 'File is HDR10',
         },
+        {
+            number: 4,
+            tooltip: 'File is not HDR',
+        },
     ],
 }); };
 exports.details = details;
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 var plugin = function (args) {
-    var _a, _b;
+    var _a, _b, _c, _d;
     var lib = require('../../../../../methods/lib')();
     // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-param-reassign
     args.inputs = lib.loadDefaultValues(args.inputs, details);
-    var outputNum = 3;
-    if ((_b = (_a = args.inputFileObj) === null || _a === void 0 ? void 0 : _a.mediaInfo) === null || _b === void 0 ? void 0 : _b.track) {
+    var outputNum = 4;
+    if (Array.isArray((_b = (_a = args === null || args === void 0 ? void 0 : args.inputFileObj) === null || _a === void 0 ? void 0 : _a.ffProbeData) === null || _b === void 0 ? void 0 : _b.streams)) {
+        for (var i = 0; i < args.inputFileObj.ffProbeData.streams.length; i += 1) {
+            var stream = args.inputFileObj.ffProbeData.streams[i];
+            if (stream.codec_type === 'video'
+                && stream.color_transfer === 'smpte2084'
+                && stream.color_primaries === 'bt2020'
+                && stream.color_range === 'tv') {
+                outputNum = 3;
+            }
+        }
+    }
+    else {
+        throw new Error('File has no stream data');
+    }
+    if ((_d = (_c = args.inputFileObj) === null || _c === void 0 ? void 0 : _c.mediaInfo) === null || _d === void 0 ? void 0 : _d.track) {
         args.inputFileObj.mediaInfo.track.forEach(function (stream) {
             if (stream['@type'].toLowerCase() === 'video') {
                 if (stream.hasOwnProperty('HDR_Format')) {
@@ -55,9 +73,6 @@ var plugin = function (args) {
                 }
             }
         });
-    }
-    else {
-        throw new Error('File is not HDR.');
     }
     return {
         outputFileObj: args.inputFileObj,

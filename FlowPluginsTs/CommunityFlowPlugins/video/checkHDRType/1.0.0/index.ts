@@ -31,6 +31,10 @@ const details = (): IpluginDetails => ({
       number: 3,
       tooltip: 'File is HDR10',
     },
+    {
+      number: 4,
+      tooltip: 'File is not HDR',
+    },
   ],
 });
 
@@ -40,7 +44,23 @@ const plugin = (args: IpluginInputArgs): IpluginOutputArgs => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-param-reassign
   args.inputs = lib.loadDefaultValues(args.inputs, details);
 
-  let outputNum = 3;
+  let outputNum = 4;
+
+  if (Array.isArray(args?.inputFileObj?.ffProbeData?.streams)) {
+    for (let i = 0; i < args.inputFileObj.ffProbeData.streams.length; i += 1) {
+      const stream = args.inputFileObj.ffProbeData.streams[i];
+      if (
+        stream.codec_type === 'video'
+        && stream.color_transfer === 'smpte2084'
+        && stream.color_primaries === 'bt2020'
+        && stream.color_range === 'tv'
+      ) {
+        outputNum = 3;
+      }
+    }
+  } else {
+    throw new Error('File has no stream data');
+  }
 
   if (args.inputFileObj?.mediaInfo?.track) {
     args.inputFileObj.mediaInfo.track.forEach((stream) => {
@@ -58,8 +78,6 @@ const plugin = (args: IpluginInputArgs): IpluginOutputArgs => {
         }
       }
     });
-  } else {
-    throw new Error('File is not HDR.');
   }
 
   return {
