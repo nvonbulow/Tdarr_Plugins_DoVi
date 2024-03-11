@@ -56,7 +56,7 @@ jobs:
 
       - name: Read version from Dockerfile
         id: getversion
-        run: echo "::set-output name=version::$(head -n 1 ./docker/Dockerfile | sed 's/FROM .*:\(.*\) AS.*/\1/')"
+        run: echo "version=$(head -n 1 ./docker/Dockerfile | sed 's/FROM .*:\(.*\) AS.*/\1/')"  >> $GITHUB_OUTPUT
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
