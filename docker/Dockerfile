@@ -1,0 +1,25 @@
+FROM haveagitgat/tdarr_node:2.15.01 AS build
+
+ARG MP4BPOX_TAG="v2.2.1"
+
+RUN \
+  apt-get update && \
+  apt-get install -y \
+    build-essential \
+    git \
+    pkg-config \
+    zlib1g-dev \
+  && rm -rf /var/lib/apt/lists/*
+
+# MP4BOX
+RUN \
+  git clone --depth 1 --branch ${MP4BPOX_TAG} https://github.com/gpac/gpac.git && \
+  cd gpac && \
+  ./configure --static-bin && \
+  make -j $(nproc) && \
+  make install
+
+FROM haveagitgat/tdarr_node:2.15.01
+
+COPY --from=build /usr/local/lib/libgpac_static.a /usr/local/lib/
+COPY --from=build --chmod=755 /usr/local/bin/MP4Box /usr/local/bin/gpac /usr/local/bin/
