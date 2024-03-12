@@ -119,7 +119,7 @@
       "pluginName": "ffmpegCommandCustomArguments",
       "version": "1.0.0",
       "inputsDB": {
-        "outputArguments": "-vf scale_qsv=1920:-1 -pix_fmt + -look_ahead_depth 100 -extbrc 1 -global_quality 21 -rdo 1 -mbbrc 1 -b_strategy 1 -adaptive_i 1 -adaptive_b 1",
+        "outputArguments": "-vf scale_qsv=1920:-1 -pix_fmt + -look_ahead_depth 100 -rdo 1 -mbbrc 1 -b_strategy 1 -adaptive_i 1 -adaptive_b 1 -b:v 5M",
         "inputArguments": "-hwaccel_output_format qsv -init_hw_device qsv:hw_any,child_device_type=vaapi"
       },
       "id": "FgNlilaNK",
@@ -134,7 +134,7 @@
       "pluginName": "ffmpegCommandCustomArguments",
       "version": "1.0.0",
       "inputsDB": {
-        "outputArguments": "-look_ahead_depth 100 -extbrc 1 -global_quality 21 -rdo 1 -mbbrc 1 -b_strategy 1 -adaptive_i 1 -adaptive_b 1",
+        "outputArguments": "-global_quality 18 -look_ahead_depth 100 -rdo 1 -mbbrc 1 -b_strategy 1 -adaptive_i 1 -adaptive_b 1",
         "inputArguments": "-hwaccel_output_format qsv -init_hw_device qsv:hw_any,child_device_type=vaapi"
       },
       "id": "ceZJOp83R",
@@ -177,7 +177,7 @@
       }
     },
     {
-      "name": "Execute",
+      "name": "Transcode",
       "sourceRepo": "Community",
       "pluginName": "ffmpegCommandExecute",
       "version": "1.0.0",
@@ -196,7 +196,8 @@
       "pluginName": "ffmpegCommandSetVideoEncoder",
       "version": "1.0.0",
       "inputsDB": {
-        "hardwareType": "qsv"
+        "hardwareType": "qsv",
+        "ffmpegPreset": "slow"
       },
       "id": "Zuta3rYPA",
       "position": {
@@ -909,13 +910,6 @@
       "id": "cPxn4WvJ7"
     },
     {
-      "source": "YxbKSxKYF",
-      "sourceHandle": "1",
-      "target": "qyC1CF3KV",
-      "targetHandle": null,
-      "id": "KxHnchdFv"
-    },
-    {
       "source": "NKjSvcqmw",
       "sourceHandle": "1",
       "target": "C4jauEXGP",
@@ -1217,13 +1211,6 @@
       "id": "FMPPhPlrG"
     },
     {
-      "source": "NgzO_04SX",
-      "sourceHandle": "1",
-      "target": "4XFxqsrs2",
-      "targetHandle": null,
-      "id": "CVuELe-Co"
-    },
-    {
       "source": "oT2jV7Qeh",
       "sourceHandle": "1",
       "target": "KbofGcQL4",
@@ -1285,20 +1272,6 @@
       "target": "YegnE9Sfq",
       "targetHandle": null,
       "id": "bcup6cX1f"
-    },
-    {
-      "source": "n6FZBVLGn",
-      "sourceHandle": "1",
-      "target": "jrhVhsk78",
-      "targetHandle": null,
-      "id": "A2Mm4yZ_y"
-    },
-    {
-      "source": "r2DZZNNv4",
-      "sourceHandle": "1",
-      "target": "uJQ09R2eT",
-      "targetHandle": null,
-      "id": "rP_q_wHZE"
     },
     {
       "source": "x7dGKwQc7",
@@ -1474,6 +1447,34 @@
       "target": "pb0toSrSV",
       "targetHandle": null,
       "id": "bRdkPppjE"
+    },
+    {
+      "source": "YxbKSxKYF",
+      "sourceHandle": "1",
+      "target": "qyC1CF3KV",
+      "targetHandle": null,
+      "id": "Vhg4mXcgJ"
+    },
+    {
+      "source": "n6FZBVLGn",
+      "sourceHandle": "1",
+      "target": "jrhVhsk78",
+      "targetHandle": null,
+      "id": "q7IXM9TJL"
+    },
+    {
+      "source": "NgzO_04SX",
+      "sourceHandle": "1",
+      "target": "4XFxqsrs2",
+      "targetHandle": null,
+      "id": "w5C8rgKTd"
+    },
+    {
+      "source": "r2DZZNNv4",
+      "sourceHandle": "1",
+      "target": "uJQ09R2eT",
+      "targetHandle": null,
+      "id": "RXlOF8ox4"
     }
   ]
 }
