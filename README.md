@@ -24,6 +24,8 @@ A & F --> G[Remux with audio from original file]
 
 Basically the Dolby Vision metadata has to be extracted first, then added back onto the transcoded video stream. This process can be done with profile 7 as well, it just involved some extra steps, but most content is not in profile 7.
 
+This process is based on the excellent tool and writeup by [@gacopl](https://github.com/gacopl): [dvmkv2mp4](https://github.com/gacopl/dvmkv2mp4)
+
 ### Extracting the stream
 
 The [Extract Streams](FlowPluginsTs/CommunityFlowPlugins/ffmpegCommand/ffmpegCommandExtractStreams/1.0.0/index.ts) plugin is responsible for this step. It will extract the HEVC stream and save it in the working directory with the same name as the original file but with `.hevc` extension. It will also extract all ASS and SRT subtitles and save them as `.srt` files in the `sub_streams` folder in the working directory for later use. The subtitle files will be annotated with their metadata (language, forced, sdh, default) that will be picked up by Jellyfin. The plugin also supports filtering subtitles based on language.
@@ -44,6 +46,9 @@ tdarr-ffmpeg -y \
 ```
 </details>
 
+## References
+
+* [dvmkv2mp4](https://github.com/gacopl/dvmkv2mp4) - Convert any Dolby Vision/HDR10+ MKV to MP4 that runs on many devices
 
 <details>
 <summary>Original readme</summary>
