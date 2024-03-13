@@ -125,7 +125,7 @@ The [Remux DoVi MP4](FlowPluginsTs/CommunityFlowPlugins/ffmpegCommand/ffmpegComm
 
 Stream titles are handled differently in mp4 containers than in mkv, to deal with this the original audio stream titles are mapped to the `handler_name` metadata tag in the output file as Jellyfin [will use that](https://github.com/jellyfin/jellyfin/blob/v10.8.13/MediaBrowser.MediaEncoding/Probing/ProbeResultNormalizer.cs#L703-L711) to read stream titles as a fallback.
 
-Chapter data is copied as part of the metadata, but chapter titles are dropped as it will result in a data stream in the output file which I found to cause playback issues.
+Chapter data is copied as part of the metadata, but [chapter titles are dropped](https://stackoverflow.com/a/60374650) as it will result in a data stream in the output file which I found to cause playback issues.
 
 <details>
 <summary>Example command</summary>
@@ -279,6 +279,7 @@ flowchart LR
 * [dvmkv2mp4](https://github.com/gacopl/dvmkv2mp4) - Convert any Dolby Vision/HDR10+ MKV to MP4 that runs on many devices
 * [dovi_tool](https://github.com/quietvoid/dovi_tool)
 * [MP4Box](https://wiki.gpac.io/MP4Box/MP4Box/)
+* [Discard data stream from container using ffmpeg](https://stackoverflow.com/a/60374650) - chapter titles creating a data stream in mp4s, how to drop that
 
 <details>
 <summary>Original readme</summary>
