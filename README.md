@@ -198,6 +198,12 @@ For this to work the following is needed on *arr side:
 
 When all of this is configured, Tdarr will move the final file and appropriate additional files into the blackhole folder, *arr will import it like it was freshly downloaded and place it in the library with the proper naming scheme.
 
+### Check HDR type
+
+The [Check HDR type](FlowPluginsTs/CommunityFlowPlugins/video/checkHDRType/1.0.0/index.ts) plugin is an extended version of the original [Check HDR Video](FlowPluginsTs/CommunityFlowPlugins/video/checkHdr/1.0.0/index.ts) plugin, supporting determining the HDR standard used by the file, not just if it is HDR or not.
+
+Supports: Dolby Vision, HDR10+, HDR10 and SDR.
+
 ## References
 
 * [dvmkv2mp4](https://github.com/gacopl/dvmkv2mp4) - Convert any Dolby Vision/HDR10+ MKV to MP4 that runs on many devices
