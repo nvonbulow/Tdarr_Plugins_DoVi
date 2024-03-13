@@ -1,7 +1,10 @@
-<p align="center">
-  <img src="https://s7.gifyu.com/images/GifCroppedTran.gif"/>
-</p>
+# Tdarr_Plugins_DoVi
 
+Tdarr plugins expanded with the ability to transcode Dolby Vision videos and remux them into MP4s compatible with LG TVs.
+
+
+<details>
+<summary>Original readme</summary>
 
 # Tdarr_Plugins
 
@@ -38,5 +41,4 @@ Run tests:
 4. Make sure typescript is intalled with `npm i -g typescript` then run `tsc` to compile the changes.
 5. Refresh the browser and Tdarr will pick up the changes
 
-
-
+</details>
