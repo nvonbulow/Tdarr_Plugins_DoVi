@@ -2,6 +2,10 @@
 
 Tdarr plugins expanded with the ability to transcode Dolby Vision videos and remux them into MP4s compatible with LG TVs.
 
+## Why
+
+LG WebOS doesn't support playing back Dolby Vision content from mkv containers, only from mp4. This could be simply solved by remuxing with `ffmpeg` using the `-strict unofficial` flag as of version 6.0. But I also wanted to downscale the videos to 1080p to save space as I don't care about 4k, but most Dolby Vision content is only available in 4k.
+
 ## How it works
 
 One cannot simply transcode the video stream to achieve this like with SDR content (or with HDR10 for that matter).
