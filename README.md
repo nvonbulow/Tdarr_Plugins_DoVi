@@ -2,6 +2,24 @@
 
 Tdarr plugins expanded with the ability to transcode Dolby Vision videos and remux them into MP4s compatible with LG TVs.
 
+## How it works
+
+One cannot simply transcode the video stream to achieve this like with SDR content (or with HDR10 for that matter).
+
+For Dolby Vision profile 7 is not supported at the moment, for profile 4, 5 and 8 the process is the following:
+
+```mermaid
+graph TD
+A[Input File] --> B[Extract raw HEVC stream]
+B --> C[Extract Dolby Vision RPU]
+B --> D[Transcode video stream]
+C & D --> E[Inject Dolby Vision RPU into transcoded video]
+E --> F[Package raw stream into MP4]
+A & F --> G[Remux with audio from original file]
+```
+
+Basically the Dolby Vision metadata has to be extracted first, then added back onto the transcoded video stream. This process can be done with profile 7 as well, it just involved some extra steps, but most content is not in profile 7.
+
 
 <details>
 <summary>Original readme</summary>
