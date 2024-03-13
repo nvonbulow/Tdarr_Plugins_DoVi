@@ -46,6 +46,22 @@ tdarr-ffmpeg -y \
 ```
 </details>
 
+### Extracting Dolby Vision RPU
+
+The [Extract DoVi RPU](FlowPluginsTs/CommunityFlowPlugins/video/extractDoViRpu/1.0.0/index.ts) plugin is responsible for extracting Dolby Vision RPU data. To achieve this [dovi_tool](https://github.com/quietvoid/dovi_tool) is needed. The plugin will extract the RPU data from the HEVC stream and save it to the working directory as a `.rpu.bin` file for later use.
+
+<details>
+<summary>Example command</summary>
+
+```sh
+/usr/local/bin/dovi_tool \
+    -c \    # Crop, remove letterbox
+    -m 2 \  # Mode 2, converts the RPU to be profile 8.1 compatible.
+    extract-rpu /shows/Transcode/tdarr-workDir-node-J2D7FNt5O-worker-open-ox-ts-1710332442638/1710332450149/input.hevc
+    -o /temp/tdarr-workDir-node-J2D7FNt5O-worker-open-ox-ts-1710332442638/dovi_tool/input.rpu.bin
+```
+</details>
+
 ## References
 
 * [dvmkv2mp4](https://github.com/gacopl/dvmkv2mp4) - Convert any Dolby Vision/HDR10+ MKV to MP4 that runs on many devices
