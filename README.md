@@ -62,6 +62,28 @@ The [Extract DoVi RPU](FlowPluginsTs/CommunityFlowPlugins/video/extractDoViRpu/1
 ```
 </details>
 
+### Transcoding video stream
+
+I'm using Intel Kaby Lake CPUs (7th gen) to transcode video. There's one caveat I discovered here: while regular videos have no issues playing back if transcoded using quality based rate control methods supported by Intel Quicksync (CQP, ICQ) ([ffmpeg documentation](https://ffmpeg.org/ffmpeg-codecs.html#Ratecontrol-Method)) when used on Dolby Vision content it will result in a playback error. Thus for this purpose I have to fall back on good old VBR ratecontrol. I found that Netflix is using ~5Mbps for streaming 1080p Dolby Vision content, so I've set the same.
+
+<details>
+<summary>Example command</summary>
+
+```sh
+tdarr-ffmpeg -y \
+    -hwaccel_output_format qsv -init_hw_device qsv:hw_any,child_device_type=vaapi -hwaccel qsv
+    -i /temp/tdarr-workDir-node-J2D7FNt5O-worker-open-ox-ts-1710332442638/1710332450149/input.hevc \
+    -map 0:0 -c:0 hevc_qsv \
+    -qp 22 \    # This is ignored by the hevc_qsv encoder, but tdarr puts it in either way
+    -preset slow \  # Slow preset provides a good enough quality while not taking 3 and a half decades
+    -vf scale_qsv=1920:-1 \ # Set resolution and calculate height to handle 16:9 and letterbox videos as well
+    -pix_fmt + \    # Keep the same pixel format as the input
+    -look_ahead_depth 100 -rdo 1 -mbbrc 1 -b_strategy 1 -adaptive_i 1 -adaptive_b 1 \   # QSV specific parameters, some of these are probably ignored when using VBR
+    -b:v 5M \   # Target an average of 5M bitrate
+    /shows/Transcode/tdarr-workDir-node-J2D7FNt5O-worker-open-ox-ts-1710332442638/1710332520936/input.hevc
+```
+</details>
+
 ## References
 
 * [dvmkv2mp4](https://github.com/gacopl/dvmkv2mp4) - Convert any Dolby Vision/HDR10+ MKV to MP4 that runs on many devices
