@@ -145,6 +145,35 @@ tdarr-ffmpeg -y \
 ```
 </details>
 
+## Other plugins
+
+### Parse file with Radarr or Sonarr
+
+The [Parse file with Radarr or Sonarr](FlowPluginsTs/CommunityFlowPlugins/tools/parseFileWithRadarrOrSonarr/1.0.0/index.ts) plugin is used to get additional info about the input file from Sonarr / Radarr. The library is handled by these two, so it's safe to assume they will have additional info about the files.
+
+The plugin will save the info in a file named `arr.json` in the working directory.
+
+```json
+{
+  "fileId": 1234,
+  "originalPath": "/path/to/input.mkv",
+  "releaseGroup": "AWESOMERLS",
+  "sceneName": "My.Input.Movie.SceneName.2042.1080p.BluRay.x264-AWESOMERLS"
+}
+```
+
+#### Configuration
+
+Use library variable to provide configuration data for this plugin.
+
+```
+arr_api_key: y42k7kjg5f3htd6afktixqd8e5he2n84
+arr_host: http://radarr.media.svc.cluster.local:7878
+arr: radarr
+```
+
+These can be referenced in the plugin input like this: `{{{args.userVariables.library.arr_host}}}`
+
 ## References
 
 * [dvmkv2mp4](https://github.com/gacopl/dvmkv2mp4) - Convert any Dolby Vision/HDR10+ MKV to MP4 that runs on many devices
