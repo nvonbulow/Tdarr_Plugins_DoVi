@@ -174,6 +174,30 @@ arr: radarr
 
 These can be referenced in the plugin input like this: `{{{args.userVariables.library.arr_host}}}`
 
+### Wait for rename from Radarr or Sonarr
+
+The [Wait for rename from Radarr or Sonarr](FlowPluginsTs/CommunityFlowPlugins/tools/getNewPathFromRadarrOrSonarr/1.0.0/index.ts) plugin is responsible for checking in with Sonarr or Radarr to check if the transcoded file was imported properly. The purpose of this is to set the output path of the plugin flow in Tdarr to the path *arr imported the file to as they are handling naming for library files, Tdarr has no way of knowing the resulting filename. It will wait until the path *arr is reporting for the file is changed from the original path was, as read from `arr.json`.
+
+It will try a certain number of times and wait for a set time between tries, both can be configured. It also support path mapping as the path known to *arr might be different than what Tdarr is using, this can be configured using the `path_mapping_from` (path used by *arr) and `path_mapping_to` (path used by Tdarr) parameters.
+
+Same configuration recommendation goes as for [Parse file with Radarr or Sonarr](#configuration).
+
+### Move Folder Content to Blachole
+
+The [Move Folder Content to Blachole](FlowPluginsTs/CommunityFlowPlugins/file/moveToBlackhole/1.0.0/index.ts) plugin is responsible for moving the given file and previously extracted subtitle streams from `sub_streams` into the specified blackhole folder. It will also grab all files matching the specified extension (`.srt` for example) in the original folder and copy those to the blackhole folder as well. This is important in the case of handling mp4 files for example which would loose the associated external subtitles unless copied.
+
+It will also change the release group on the file to `TDARR`, this is useful for making sure *arr always imports these files by setting it with a higher custom score.
+
+The goal of this plugin is to put all the appropriate content in a folder watched by a blackhole downloader of Sonarr or Radarr.
+
+For this to work the following is needed on *arr side:
+
+1. A blackhole downloader watching the folder set as the output folder of this plugin
+1. A custom format matching the `TDARR` release group
+1. The Tdarr custom format configured with a positive score value in the quality profile used
+
+When all of this is configured, Tdarr will move the final file and appropriate additional files into the blackhole folder, *arr will import it like it was freshly downloaded and place it in the library with the proper naming scheme.
+
 ## References
 
 * [dvmkv2mp4](https://github.com/gacopl/dvmkv2mp4) - Convert any Dolby Vision/HDR10+ MKV to MP4 that runs on many devices
