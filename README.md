@@ -84,9 +84,46 @@ tdarr-ffmpeg -y \
 ```
 </details>
 
+### Injecting RPU into the transcoded stream
+
+The [Inject DoVi RPU](FlowPluginsTs/CommunityFlowPlugins/video/injectDoViRpu/1.0.0/index.ts) plugin is responsible for injecting the RPU data back into the video stream. The process is the reverse of [extracting Dolby Vision RPU](#extracting-dolby-vision-rpu) using [dovi_tool](https://github.com/quietvoid/dovi_tool) again. Inject the previously saved RPU data from the `.rpu.bin` file, injects it into the transcoded stream from the previous step and save the resulting video stream as an `.rpu.hevc` file in the workspace.
+
+<details>
+<summary>Example command</summary>
+
+```sh
+/usr/local/bin/dovi_tool \
+    -i /shows/Transcode/tdarr-workDir-node-J2D7FNt5O-worker-open-ox-ts-1710332442638/1710332520936/input.hevc \ # Transcoded video from previous step
+    --rpu-in /temp/tdarr-workDir-node-J2D7FNt5O-worker-open-ox-ts-1710332442638/dovi_tool/input.rpu.bin \
+    extract-rpu /shows/Transcode/tdarr-workDir-node-J2D7FNt5O-worker-open-ox-ts-1710332442638/1710332450149/input.hevc \
+    -o /temp/tdarr-workDir-node-J2D7FNt5O-worker-open-ox-ts-1710332442638/1710333079164/input.rpu.hevc
+```
+</details>
+
+### Package HEVC stream in MP4
+
+For better compatibility I use [MP4Box](https://wiki.gpac.io/MP4Box/MP4Box/) to package the stream into an mp4 container. Anecdotally MP4Box handles this better than ffmpeg, at least at the time of writing. This is handled by the [Package DoVi mp4](FlowPluginsTs/CommunityFlowPlugins/video/packageDoViMp4/1.0.0/index.ts) plugin. This resulting mp4 will only have the video stream in it, it will be used in the next step along with the audio streams from the input file to remux into the final form.
+
+<details>
+<summary>Example command</summary>
+
+```sh
+/usr/local/bin/MP4Box \
+    -add /temp/tdarr-workDir-node-J2D7FNt5O-worker-open-ox-ts-1710332442638/1710333079164/input.rpu.hevc:dvp=8.1:xps_inband:hdr=none \
+    -tmp /temp/tdarr-workDir-node-J2D7FNt5O-worker-open-ox-ts-1710332442638/1710333091979/tmp \
+    -brand mp42isom \
+    -ab dby1 \
+    -no-iod \
+    -enable 1 \
+    /temp/tdarr-workDir-node-J2D7FNt5O-worker-open-ox-ts-1710332442638/1710333091934/input.rpu.hevc.mp4
+```
+</details>
+
 ## References
 
 * [dvmkv2mp4](https://github.com/gacopl/dvmkv2mp4) - Convert any Dolby Vision/HDR10+ MKV to MP4 that runs on many devices
+* [dovi_tool](https://github.com/quietvoid/dovi_tool)
+* [MP4Box](https://wiki.gpac.io/MP4Box/MP4Box/)
 
 <details>
 <summary>Original readme</summary>
