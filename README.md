@@ -234,6 +234,46 @@ tdarr-ffmpeg -y \
 ```
 </details>
 
+## Using this in Tdarr
+
+### Getting plugins from this repo
+
+In order the use the plugins from this repository simply change the `Community plugins repository` option to `https://github.com/andrasmaroy/Tdarr_Plugins_DoVi/archive/master.zip` in the Tdarr options tabs then restart the Tdarr server then the nodes as well. On startup the server will pull the plugins from the given repository and the nodes when starting will pull the plugins from the server. Check the server logs before restarting the nodes to make sure the server finished updating the plugins.
+
+### Using dovi_tool and MP4Box
+
+`MP4Box` and `dovi_tool` are not part of the official Tdarr image, to solve this I've [extended](docker/Dockerfile) the official image with these tools. It is available at [packages](https://github.com/andrasmaroy/Tdarr_Plugins_DoVi/pkgs/container/tdarr_node).
+
+### Tdarr flow
+
+Everything discussed above comes together in a [Tdarr flow](https://docs.tdarr.io/docs/plugins/flow-plugins/basics). My setup is available exported as [flow.json](flow.json).
+
+The flow on the high level is setup like so:
+
+```mermaid
+flowchart LR
+   a[Input File] --> IsHDR{IsHDR}
+   IsHDR --> |Dolby Vision| DVR
+   IsHDR --> |HDR10| codec
+   IsHDR --> |HDR| codec
+   subgraph Dolby Vision
+   DVR{Resolution}
+   container{Container}
+   DVR --> |At or below 1080p| container
+   DVR --> |Above 1080p| Transcode --> Remux
+   container --> |mkv| Remux
+   end
+   subgraph Regular
+   codec{Is HEVC}
+   codec --> |Yes| res{Resolution}
+   codec --> |No| tc[Transcode]
+   res --> |Above 1080p| tc
+   end
+   res --> |At or below 1080p| skip[Nothing to do]
+   container --> |mp4| skip
+   Remux & tc --> blackhole[Move to blackhole]
+```
+
 ## References
 
 * [dvmkv2mp4](https://github.com/gacopl/dvmkv2mp4) - Convert any Dolby Vision/HDR10+ MKV to MP4 that runs on many devices
