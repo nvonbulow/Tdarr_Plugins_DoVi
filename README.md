@@ -204,6 +204,11 @@ The [Check HDR type](FlowPluginsTs/CommunityFlowPlugins/video/checkHDRType/1.0.0
 
 Supports: Dolby Vision, HDR10+, HDR10 and SDR.
 
+### Check DoVi Profile
+
+The [Check DoVi Profile](FlowPluginsTs/CommunityFlowPlugins/video/checkDoViProfile/1.0.0/index.ts) plugin is responsible for determining the Dolby Vision profile of the given file. As mentioned in the [How it works](#how-it-works) section this setup doesn't support profile 7, so it is important to determine the profile used by the file.
+Check DoVi profile
+
 ## References
 
 * [dvmkv2mp4](https://github.com/gacopl/dvmkv2mp4) - Convert any Dolby Vision/HDR10+ MKV to MP4 that runs on many devices
