@@ -280,6 +280,14 @@ flowchart LR
 * [dovi_tool](https://github.com/quietvoid/dovi_tool)
 * [MP4Box](https://wiki.gpac.io/MP4Box/MP4Box/)
 * [Discard data stream from container using ffmpeg](https://stackoverflow.com/a/60374650) - chapter titles creating a data stream in mp4s, how to drop that
+* Couple of reddit posts:
+    * How HDR works [post 1](https://old.reddit.com/r/ffmpeg/comments/s3cfsd/is_this_ffmpeg_command_retaining_hdr_4k_hevc_hdr/hslgohc/), [post 2](https://old.reddit.com/r/ffmpeg/comments/rv3sm5/downscaling_4k_hdr_10bit_to_1080p_but_maintaining/hr4omtp/), [post 3](https://old.reddit.com/r/ffmpeg/comments/wgols5/how_to_downscale_from_proper_4k_to_1080p_keeping/)
+    * [Dolby Vision from MKV to MP4 using ffmpeg and mp4muxer](https://old.reddit.com/r/ffmpeg/comments/qe7oq1/dolby_vision_from_mkv_to_mp4_using_ffmpeg_and/)
+    * [Trigger Radar to Rename after Transcode](https://old.reddit.com/r/Tdarr/comments/wlrksm/trigger_radar_to_rename_after_transcode/) - Setting up blackhole downloader in *arr in conjunction with Tdarr
+    * [Convert DV Profile 7 to 8.1 using dovi_tool, mp4box and ffmpeg](https://old.reddit.com/r/ffmpeg/comments/11gu4o4/convert_dv_profile_7_to_81_using_dovi_tool_mp4box/jn5gman/)
+* [Encoding UHD 4K HDR10 and HDR10+ Videos](https://codecalamity.com/encoding-uhd-4k-hdr10-videos-with-ffmpeg/#saving-dolby-vision) - Detailing the process of downscaling HDR videos
+* [ffmpeg and hevc_qsv Intel Quick Sync settings](https://nelsonslog.wordpress.com/2022/08/22/ffmpeg-and-hevc_qsv-intel-quick-sync-settings/) - Quality settings for Quick Sync
+* [ffmpeg Quick Sync documentation](https://trac.ffmpeg.org/wiki/Hardware/QuickSync)
 
 <details>
 <summary>Original readme</summary>
