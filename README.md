@@ -209,6 +209,31 @@ Supports: Dolby Vision, HDR10+, HDR10 and SDR.
 The [Check DoVi Profile](FlowPluginsTs/CommunityFlowPlugins/video/checkDoViProfile/1.0.0/index.ts) plugin is responsible for determining the Dolby Vision profile of the given file. As mentioned in the [How it works](#how-it-works) section this setup doesn't support profile 7, so it is important to determine the profile used by the file.
 Check DoVi profile
 
+## Remuxing Dolby Vision content without transcoding
+
+The [Remux DoVi MP4](FlowPluginsTs/CommunityFlowPlugins/ffmpegCommand/ffmpegCommandRemuxDoviMp4/1.0.0/index.ts) plugin can also handle remuxing an input mkv file into a playable mp4 file without transcoding the video. Use the [Set Container](FlowPluginsTs/CommunityFlowPlugins/ffmpegCommand/ffmpegCommandSetContainer/1.0.0/index.ts) plugin before to set the container to mp4 then this plugin to remux. Same as [previously](#remuxing-into-the-final-mp4) TrueHD audio streams are dropped and metadata is copied and mapped for audio streams.
+
+I recommend to [extract](#extracting-the-stream) subtitle streams beforehand to keep them using the [blackhole](#move-folder-content-to-blachole) plugin.
+
+<details>
+<summary>Example command</summary>
+
+```sh
+tdarr-ffmpeg -y \
+    -i /path/to/input.mkv \
+    -map 0:0 -c:0 copy \
+    -map 0:1 -c:1 copy \
+    -map 0:2 -c:2 copy \
+    -map_metadata 0 \
+    -map_metadata:c -1 \
+    -bsf:v hevc_mp4toannexb \
+    -dn \
+    -movflags +faststart \
+    -strict unofficial \
+    /temp/tdarr-workDir-node-J2D7FNt5O-worker-mean-moose-ts-1710205452909/1710205516754/input.mp4
+```
+</details>
+
 ## References
 
 * [dvmkv2mp4](https://github.com/gacopl/dvmkv2mp4) - Convert any Dolby Vision/HDR10+ MKV to MP4 that runs on many devices
