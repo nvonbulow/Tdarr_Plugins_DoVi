@@ -129,13 +129,17 @@ var details = function () { return ({
     outputs: [
         {
             number: 1,
-            tooltip: 'Continue to next plugin',
+            tooltip: 'File imported successfully',
+        },
+        {
+            number: 2,
+            tooltip: 'File not imported',
         },
     ],
 }); };
 exports.details = details;
 var plugin = function (args) { return __awaiter(void 0, void 0, void 0, function () {
-    var lib, arr, arr_api_key, arr_host, retry_delay, retry_limit, arrHost, headers, endpoint, fileField, arrInfo, tries, outputPath, res, fileKey, error_1, path_mapping_from, path_mapping_to;
+    var lib, arr, arr_api_key, arr_host, retry_delay, retry_limit, outputNum, arrHost, headers, endpoint, fileField, arrInfo, tries, outputPath, res, fileKey, error_1, path_mapping_from, path_mapping_to;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -147,6 +151,7 @@ var plugin = function (args) { return __awaiter(void 0, void 0, void 0, function
                 arr_host = String(args.inputs.arr_host).trim();
                 retry_delay = Number(args.inputs.retry_delay);
                 retry_limit = Number(args.inputs.retry_limit);
+                outputNum = 2;
                 arrHost = arr_host.endsWith('/') ? arr_host.slice(0, -1) : arr_host;
                 headers = {
                     'Content-Type': 'application/json',
@@ -170,7 +175,7 @@ var plugin = function (args) { return __awaiter(void 0, void 0, void 0, function
                             outputFileObj: {
                                 _id: args.inputFileObj._id,
                             },
-                            outputNumber: 1,
+                            outputNumber: outputNum,
                             variables: args.variables,
                         }];
                 }
@@ -196,6 +201,7 @@ var plugin = function (args) { return __awaiter(void 0, void 0, void 0, function
                 return [3 /*break*/, 6];
             case 5:
                 outputPath = res.data[fileKey].path;
+                outputNum = 1;
                 args.jobLog("File imported as ".concat(outputPath));
                 _a.label = 6;
             case 6: return [3 /*break*/, 8];
@@ -220,7 +226,7 @@ var plugin = function (args) { return __awaiter(void 0, void 0, void 0, function
                         outputFileObj: {
                             _id: outputPath,
                         },
-                        outputNumber: 1,
+                        outputNumber: outputNum,
                         variables: args.variables,
                     }];
         }

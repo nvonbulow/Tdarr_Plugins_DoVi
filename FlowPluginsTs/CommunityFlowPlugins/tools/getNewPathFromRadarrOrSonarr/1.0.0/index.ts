@@ -96,7 +96,11 @@ const details = (): IpluginDetails => ({
   outputs: [
     {
       number: 1,
-      tooltip: 'Continue to next plugin',
+      tooltip: 'File imported successfully',
+    },
+    {
+      number: 2,
+      tooltip: 'File not imported',
     },
   ],
 });
@@ -118,6 +122,8 @@ const plugin = async (args: IpluginInputArgs): Promise<IpluginOutputArgs> => {
   const arr_host = String(args.inputs.arr_host).trim();
   const retry_delay = Number(args.inputs.retry_delay);
   const retry_limit = Number(args.inputs.retry_limit);
+
+  let outputNum = 2;
 
   const arrHost = arr_host.endsWith('/') ? arr_host.slice(0, -1) : arr_host;
 
@@ -143,7 +149,7 @@ const plugin = async (args: IpluginInputArgs): Promise<IpluginOutputArgs> => {
       outputFileObj: {
         _id: args.inputFileObj._id,
       },
-      outputNumber: 1,
+      outputNumber: outputNum,
       variables: args.variables,
     };
   }
@@ -165,6 +171,7 @@ const plugin = async (args: IpluginInputArgs): Promise<IpluginOutputArgs> => {
         await new Promise((f) => setTimeout(f, retry_delay * 1000));
       } else {
         outputPath = res.data[fileKey].path;
+        outputNum = 1;
         args.jobLog(`File imported as ${outputPath}`);
       }
     } catch (error) {
@@ -188,7 +195,7 @@ const plugin = async (args: IpluginInputArgs): Promise<IpluginOutputArgs> => {
     outputFileObj: {
       _id: outputPath,
     },
-    outputNumber: 1,
+    outputNumber: outputNum,
     variables: args.variables,
   };
 };
