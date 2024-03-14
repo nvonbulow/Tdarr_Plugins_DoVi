@@ -4,6 +4,57 @@
   "tags": "",
   "flowPlugins": [
     {
+      "name": "Send Web Request",
+      "sourceRepo": "Community",
+      "pluginName": "webRequest",
+      "version": "1.0.0",
+      "id": "FY_GvlJx8",
+      "position": {
+        "x": 900,
+        "y": 530
+      },
+      "inputsDB": {
+        "requestUrl": "https://api.sendgrid.com/v3/mail/send",
+        "requestHeaders": "{\n    \"Authorization\": \"Bearer {{{args.userVariables.global.sendgrid_api_key}}}\",\n    \"Content-Type\": \"application/json\"\n}",
+        "requestBody": "{\n  \"personalizations\": [\n    {\n      \"to\": [\n        {\n          \"email\": \"{{{args.userVariables.global.email_address}}}\"\n        }\n      ]\n    }\n  ],\n  \"from\": {\n    \"email\": \"tdarr@{{{args.userVariables.global.email_domain}}}\",\n    \"name\": \"Tdarr\"\n  },\n  \"subject\": \"Import unsuccessful\",\n  \"content\": [\n    {\n      \"type\": \"text/plain\",\n      \"value\": \"Importing transcoded file failed: {{{ args.originalLibraryFile._id }}}\"\n    }\n  ]\n}",
+        "method": "post"
+      }
+    },
+    {
+      "name": "Send Web Request",
+      "sourceRepo": "Community",
+      "pluginName": "webRequest",
+      "version": "1.0.0",
+      "id": "bQ4MvF9yF",
+      "position": {
+        "x": 900,
+        "y": 1105
+      },
+      "inputsDB": {
+        "requestUrl": "https://api.sendgrid.com/v3/mail/send",
+        "requestHeaders": "{\n    \"Authorization\": \"Bearer {{{args.userVariables.global.sendgrid_api_key}}}\",\n    \"Content-Type\": \"application/json\"\n}",
+        "requestBody": "{\n  \"personalizations\": [\n    {\n      \"to\": [\n        {\n          \"email\": \"{{{args.userVariables.global.email_address}}}\"\n        }\n      ]\n    }\n  ],\n  \"from\": {\n    \"email\": \"tdarr@{{{args.userVariables.global.email_domain}}}\",\n    \"name\": \"Tdarr\"\n  },\n  \"subject\": \"Import unsuccessful\",\n  \"content\": [\n    {\n      \"type\": \"text/plain\",\n      \"value\": \"Importing transcoded file failed: {{{ args.originalLibraryFile._id }}}\"\n    }\n  ]\n}",
+        "method": "post"
+      }
+    },
+    {
+      "name": "Send Web Request",
+      "sourceRepo": "Community",
+      "pluginName": "webRequest",
+      "version": "1.0.0",
+      "id": "tMLsDToJZ",
+      "position": {
+        "x": -135,
+        "y": 1105
+      },
+      "inputsDB": {
+        "requestUrl": "https://api.sendgrid.com/v3/mail/send",
+        "requestHeaders": "{\n    \"Authorization\": \"Bearer {{{args.userVariables.global.sendgrid_api_key}}}\",\n    \"Content-Type\": \"application/json\"\n}",
+        "requestBody": "{\n  \"personalizations\": [\n    {\n      \"to\": [\n        {\n          \"email\": \"{{{args.userVariables.global.email_address}}}\"\n        }\n      ]\n    }\n  ],\n  \"from\": {\n    \"email\": \"tdarr@{{{args.userVariables.global.email_domain}}}\",\n    \"name\": \"Tdarr\"\n  },\n  \"subject\": \"Import unsuccessful\",\n  \"content\": [\n    {\n      \"type\": \"text/plain\",\n      \"value\": \"Importing transcoded file failed: {{{ args.originalLibraryFile._id }}}\"\n    }\n  ]\n}",
+        "method": "post"
+      }
+    },
+    {
       "name": "Dolby Vision",
       "sourceRepo": "Community",
       "pluginName": "comment",
@@ -1510,6 +1561,27 @@
       "target": "meTrBqDrP",
       "targetHandle": null,
       "id": "q5Ce3v763"
+    },
+    {
+      "source": "DRYCV7pIm",
+      "sourceHandle": "2",
+      "target": "tMLsDToJZ",
+      "targetHandle": null,
+      "id": "k3df5l48T"
+    },
+    {
+      "source": "ocfeuCHBs",
+      "sourceHandle": "2",
+      "target": "bQ4MvF9yF",
+      "targetHandle": null,
+      "id": "aXKmfrPys"
+    },
+    {
+      "source": "j-aCKeAwm",
+      "sourceHandle": "2",
+      "target": "FY_GvlJx8",
+      "targetHandle": null,
+      "id": "ySjiFwi4R"
     }
   ]
 }
