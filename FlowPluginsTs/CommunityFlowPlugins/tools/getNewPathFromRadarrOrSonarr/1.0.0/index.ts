@@ -166,7 +166,7 @@ const plugin = async (args: IpluginInputArgs): Promise<IpluginOutputArgs> => {
         { headers },
       );
       const fileKey = fileField as keyof typeof res.data;
-      if (res.data[fileKey].path === outputPath) {
+      if (!res.data.hasFile || res.data[fileKey].path === outputPath) {
         args.jobLog('File not imported yet, waiting...');
         await new Promise((f) => setTimeout(f, retry_delay * 1000));
       } else {

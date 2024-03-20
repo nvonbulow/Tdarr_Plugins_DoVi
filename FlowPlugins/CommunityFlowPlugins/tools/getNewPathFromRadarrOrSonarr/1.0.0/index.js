@@ -193,7 +193,7 @@ var plugin = function (args) { return __awaiter(void 0, void 0, void 0, function
             case 3:
                 res = _a.sent();
                 fileKey = fileField;
-                if (!(res.data[fileKey].path === outputPath)) return [3 /*break*/, 5];
+                if (!(!res.data.hasFile || res.data[fileKey].path === outputPath)) return [3 /*break*/, 5];
                 args.jobLog('File not imported yet, waiting...');
                 return [4 /*yield*/, new Promise(function (f) { return setTimeout(f, retry_delay * 1000); })];
             case 4:
