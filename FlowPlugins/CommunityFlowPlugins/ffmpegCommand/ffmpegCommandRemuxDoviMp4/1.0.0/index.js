@@ -34,6 +34,9 @@ var plugin = function (args) {
     var outputArguments = [
         '-dn',
         '-movflags', '+faststart',
+        '-copyts',
+        '-fps_mode', '0',
+        '-muxdelay', '0',
         '-strict', 'unofficial',
     ];
     if (extension === 'mkv') {

@@ -171,7 +171,7 @@
       "version": "1.0.0",
       "inputsDB": {
         "outputArguments": "-vf scale_qsv=1920:-1 -pix_fmt + -look_ahead_depth 100 -rdo 1 -mbbrc 1 -b_strategy 1 -adaptive_i 1 -adaptive_b 1 -b:v 5M",
-        "inputArguments": "-hwaccel_output_format qsv -init_hw_device qsv:hw_any,child_device_type=vaapi"
+        "inputArguments": "-hwaccel_output_format qsv -init_hw_device qsv:hw_any,child_device_type=vaapi -r {{{args.originalLibraryFile.ffProbeData.streams.0.avg_frame_rate}}}"
       },
       "id": "FgNlilaNK",
       "position": {

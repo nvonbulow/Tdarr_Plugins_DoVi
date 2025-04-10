@@ -35,9 +35,19 @@ const plugin = async (args: IpluginInputArgs): Promise<IpluginOutputArgs> => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-param-reassign
   args.inputs = lib.loadDefaultValues(args.inputs, details);
 
+  let framerate = '';
+  if (args.originalLibraryFile.ffProbeData.streams) {
+    args.originalLibraryFile.ffProbeData.streams.forEach((stream) => {
+      if (stream.codec_type === 'video' && stream.avg_frame_rate) {
+        framerate = stream.avg_frame_rate;
+        framerate = `:fps=${stream.avg_frame_rate}`;
+      }
+    });
+  }
+
   const outputFilePath = `${getPluginWorkDir(args)}/${getFileName(args.originalLibraryFile._id)}.rpu.hevc.mp4`;
   const cliArgs: string[] = [
-    '-add', `${args.inputFileObj.file}:dvp=8.1:xps_inband:hdr=none`,
+    '-add', `${args.inputFileObj.file}:dvp=8.1:xps_inband:hdr=none${framerate}`,
     '-tmp', `${getPluginWorkDir(args)}/tmp`,
     '-brand', 'mp42isom',
     '-ab', 'dby1',

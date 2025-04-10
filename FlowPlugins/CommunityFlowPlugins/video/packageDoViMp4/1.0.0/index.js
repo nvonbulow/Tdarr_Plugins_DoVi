@@ -63,17 +63,26 @@ var details = function () { return ({
 exports.details = details;
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 var plugin = function (args) { return __awaiter(void 0, void 0, void 0, function () {
-    var lib, outputFilePath, cliArgs, spawnArgs, cli, res;
+    var lib, framerate, outputFilePath, cliArgs, spawnArgs, cli, res;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 lib = require('../../../../../methods/lib')();
                 // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-param-reassign
                 args.inputs = lib.loadDefaultValues(args.inputs, details);
+                framerate = '';
+                if (args.originalLibraryFile.ffProbeData.streams) {
+                    args.originalLibraryFile.ffProbeData.streams.forEach(function (stream) {
+                        if (stream.codec_type === 'video' && stream.avg_frame_rate) {
+                            framerate = stream.avg_frame_rate;
+                            framerate = ":fps=".concat(stream.avg_frame_rate);
+                        }
+                    });
+                }
                 outputFilePath = "".concat((0, fileUtils_1.getPluginWorkDir)(args), "/").concat((0, fileUtils_1.getFileName)(args.originalLibraryFile._id), ".rpu.hevc.mp4");
                 cliArgs = [
                     '-add',
-                    "".concat(args.inputFileObj.file, ":dvp=8.1:xps_inband:hdr=none"),
+                    "".concat(args.inputFileObj.file, ":dvp=8.1:xps_inband:hdr=none").concat(framerate),
                     '-tmp',
                     "".concat((0, fileUtils_1.getPluginWorkDir)(args), "/tmp"),
                     '-brand', 'mp42isom',
