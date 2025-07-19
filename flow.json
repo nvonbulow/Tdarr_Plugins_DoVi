@@ -1,0 +1,1590 @@
+{
+  "name": "DoVi",
+  "description": "DoVi",
+  "tags": "",
+  "flowPlugins": [
+    {
+      "name": "Send Web Request",
+      "sourceRepo": "Community",
+      "pluginName": "webRequest",
+      "version": "1.0.0",
+      "inputsDB": {
+        "requestUrl": "https://api.smtp2go.com/v3/email/send",
+        "requestHeaders": "{\n    \"X-Smtp2go-Api-Key\": \"{{{args.userVariables.global.smtp2go_api_key}}}\",\n    \"Content-Type\": \"application/json\",\n    \"accept\": \"application/json\"\n}",
+        "requestBody": "{\n  \"sender\": \"Tdarr <tdarr@{{{args.userVariables.global.email_domain}}}>\",\n  \"to\": [\n    \"{{{args.userVariables.global.email_address}}}\"\n  ],\n  \"subject\": \"Import unsuccessful\",\n  \"html_body\": \"Importing transcoded file failed: {{{ args.originalLibraryFile._id }}}\"\n}",
+        "method": "post"
+      },
+      "id": "FY_GvlJx8",
+      "position": {
+        "x": 900,
+        "y": 530
+      }
+    },
+    {
+      "name": "Send Web Request",
+      "sourceRepo": "Community",
+      "pluginName": "webRequest",
+      "version": "1.0.0",
+      "inputsDB": {
+        "requestUrl": "https://api.smtp2go.com/v3/email/send",
+        "requestHeaders": "{\n    \"X-Smtp2go-Api-Key\": \"{{{args.userVariables.global.smtp2go_api_key}}}\",\n    \"Content-Type\": \"application/json\",\n    \"accept\": \"application/json\"\n}",
+        "requestBody": "{\n  \"sender\": \"Tdarr <tdarr@{{{args.userVariables.global.email_domain}}}>\",\n  \"to\": [\n    \"{{{args.userVariables.global.email_address}}}\"\n  ],\n  \"subject\": \"Import unsuccessful\",\n  \"html_body\": \"Importing transcoded file failed: {{{ args.originalLibraryFile._id }}}\"\n}",
+        "method": "post"
+      },
+      "id": "bQ4MvF9yF",
+      "position": {
+        "x": 900,
+        "y": 1105
+      }
+    },
+    {
+      "name": "Send Web Request",
+      "sourceRepo": "Community",
+      "pluginName": "webRequest",
+      "version": "1.0.0",
+      "inputsDB": {
+        "requestUrl": "https://api.smtp2go.com/v3/email/send",
+        "requestHeaders": "{\n    \"X-Smtp2go-Api-Key\": \"{{{args.userVariables.global.smtp2go_api_key}}}\",\n    \"Content-Type\": \"application/json\",\n    \"accept\": \"application/json\"\n}",
+        "requestBody": "{\n  \"sender\": \"Tdarr <tdarr@{{{args.userVariables.global.email_domain}}}>\",\n  \"to\": [\n    \"{{{args.userVariables.global.email_address}}}\"\n  ],\n  \"subject\": \"Import unsuccessful\",\n  \"html_body\": \"Importing transcoded file failed: {{{ args.originalLibraryFile._id }}}\"\n}",
+        "method": "post"
+      },
+      "id": "tMLsDToJZ",
+      "position": {
+        "x": -135,
+        "y": 1105
+      }
+    },
+    {
+      "name": "Dolby Vision",
+      "sourceRepo": "Community",
+      "pluginName": "comment",
+      "version": "1.0.0",
+      "id": "8CWcFNnPm",
+      "position": {
+        "x": -60,
+        "y": 285
+      }
+    },
+    {
+      "name": "Wait for rename from Radarr or Sonarr",
+      "sourceRepo": "Community",
+      "pluginName": "getNewPathFromRadarrOrSonarr",
+      "version": "1.0.0",
+      "inputsDB": {
+        "arr": "{{{args.userVariables.library.arr}}}",
+        "arr_api_key": "{{{args.userVariables.library.arr_api_key}}}",
+        "arr_host": "{{{args.userVariables.library.arr_host}}}",
+        "path_mapping_from": "{{{args.userVariables.library.path_mapping_from}}}",
+        "path_mapping_to": "{{{args.userVariables.library.path_mapping_to}}}",
+        "retry_limit": "10"
+      },
+      "id": "DRYCV7pIm",
+      "position": {
+        "x": -160,
+        "y": 1035
+      }
+    },
+    {
+      "name": "Wait for rename from Radarr or Sonarr",
+      "sourceRepo": "Community",
+      "pluginName": "getNewPathFromRadarrOrSonarr",
+      "version": "1.0.0",
+      "inputsDB": {
+        "arr": "{{{args.userVariables.library.arr}}}",
+        "arr_api_key": "{{{args.userVariables.library.arr_api_key}}}",
+        "arr_host": "{{{args.userVariables.library.arr_host}}}",
+        "path_mapping_from": "{{{args.userVariables.library.path_mapping_from}}}",
+        "path_mapping_to": "{{{args.userVariables.library.path_mapping_to}}}",
+        "retry_limit": "10"
+      },
+      "id": "j-aCKeAwm",
+      "position": {
+        "x": 875,
+        "y": 460
+      }
+    },
+    {
+      "name": "Move Folder Content to Blachole",
+      "sourceRepo": "Community",
+      "pluginName": "moveToBlackhole",
+      "version": "1.0.0",
+      "id": "uJQ09R2eT",
+      "position": {
+        "x": 875,
+        "y": 400
+      }
+    },
+    {
+      "name": "Move Folder Content to Blachole",
+      "sourceRepo": "Community",
+      "pluginName": "moveToBlackhole",
+      "version": "1.0.0",
+      "id": "jrhVhsk78",
+      "position": {
+        "x": -160,
+        "y": 975
+      }
+    },
+    {
+      "name": "Extract subtitle streams",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandExecute",
+      "version": "1.0.0",
+      "inputsDB": {
+        "dryRun": "false"
+      },
+      "id": "EA90IGB3e",
+      "position": {
+        "x": -260,
+        "y": 830
+      }
+    },
+    {
+      "name": "Extract Streams",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandExtractStreams",
+      "version": "1.0.0",
+      "id": "0XsjGCiI6",
+      "position": {
+        "x": -260,
+        "y": 770
+      }
+    },
+    {
+      "name": "Reorder Streams",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandRorderStreams",
+      "version": "1.0.0",
+      "inputsDB": {
+        "processOrder": "streamTypes",
+        "channels": "",
+        "streamTypes": "audio,subtitle,video"
+      },
+      "id": "fYdl-BYLn",
+      "position": {
+        "x": -260,
+        "y": 710
+      }
+    },
+    {
+      "name": "Set Encoder Parameters",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandCustomArguments",
+      "version": "1.0.0",
+      "inputsDB": {
+        "outputArguments": "-vf scale_qsv=1920:-1 -pix_fmt + -look_ahead_depth 100 -rdo 1 -mbbrc 1 -b_strategy 1 -adaptive_i 1 -adaptive_b 1 -b:v 5M",
+        "inputArguments": "-hwaccel_output_format qsv -init_hw_device qsv:hw_any,child_device_type=vaapi -r {{{args.originalLibraryFile.ffProbeData.streams.0.avg_frame_rate}}}"
+      },
+      "id": "FgNlilaNK",
+      "position": {
+        "x": 575,
+        "y": 830
+      }
+    },
+    {
+      "name": "Set Encoder Parameters",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandCustomArguments",
+      "version": "1.0.0",
+      "inputsDB": {
+        "outputArguments": "-global_quality 18 -look_ahead_depth 100 -rdo 1 -mbbrc 1 -b_strategy 1 -adaptive_i 1 -adaptive_b 1",
+        "inputArguments": "-hwaccel_output_format qsv -init_hw_device qsv:hw_any,child_device_type=vaapi"
+      },
+      "id": "ceZJOp83R",
+      "position": {
+        "x": 550,
+        "y": 290
+      }
+    },
+    {
+      "name": "Check Video Resolution",
+      "sourceRepo": "Community",
+      "pluginName": "checkVideoResolution",
+      "version": "1.0.0",
+      "id": "cmgNdYXhi",
+      "position": {
+        "x": 775,
+        "y": 180
+      }
+    },
+    {
+      "name": "Check Video Codec",
+      "sourceRepo": "Community",
+      "pluginName": "checkVideoCodec",
+      "version": "1.0.0",
+      "id": "aYiR8oZ7s",
+      "position": {
+        "x": -60,
+        "y": 365
+      }
+    },
+    {
+      "name": "Check Video Resolution",
+      "sourceRepo": "Community",
+      "pluginName": "checkVideoResolution",
+      "version": "1.0.0",
+      "id": "BcBpo7Gry",
+      "position": {
+        "x": 550,
+        "y": 60
+      }
+    },
+    {
+      "name": "Transcode",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandExecute",
+      "version": "1.0.0",
+      "inputsDB": {
+        "dryRun": "false"
+      },
+      "id": "paOW2L7U0",
+      "position": {
+        "x": 975,
+        "y": 252.5
+      }
+    },
+    {
+      "name": "Set Video Encoder",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandSetVideoEncoder",
+      "version": "1.0.0",
+      "inputsDB": {
+        "hardwareType": "qsv",
+        "ffmpegPreset": "slow"
+      },
+      "id": "Zuta3rYPA",
+      "position": {
+        "x": 550,
+        "y": 230
+      }
+    },
+    {
+      "name": "Set resolution to 1080p",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandCustomArguments",
+      "version": "1.0.0",
+      "inputsDB": {
+        "outputArguments": "-vf scale_qsv=1920:-1 "
+      },
+      "id": "4ES6r8Zgu",
+      "position": {
+        "x": 775,
+        "y": 252.5
+      }
+    },
+    {
+      "name": "Input File",
+      "sourceRepo": "Community",
+      "pluginName": "inputFile",
+      "version": "1.0.0",
+      "id": "x7dGKwQc7",
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "name": "Check HDR",
+      "sourceRepo": "Community",
+      "pluginName": "checkHDRType",
+      "version": "1.0.0",
+      "id": "7HU8CgFuy",
+      "position": {
+        "x": 100,
+        "y": 210
+      }
+    },
+    {
+      "name": "Check DoVi Profile",
+      "sourceRepo": "Community",
+      "pluginName": "checkDoViProfile",
+      "version": "1.0.0",
+      "id": "C4jauEXGP",
+      "position": {
+        "x": 400,
+        "y": 440
+      }
+    },
+    {
+      "name": "Begin Command",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandStart",
+      "version": "1.0.0",
+      "id": "YegnE9Sfq",
+      "position": {
+        "x": -60,
+        "y": 650
+      }
+    },
+    {
+      "name": "Remux into mp4",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandExecute",
+      "version": "1.0.0",
+      "inputsDB": {
+        "dryRun": "false"
+      },
+      "id": "NihL5hVxi",
+      "position": {
+        "x": -60,
+        "y": 830
+      }
+    },
+    {
+      "name": "Check Video Codec",
+      "sourceRepo": "Community",
+      "pluginName": "checkVideoCodec",
+      "version": "1.0.0",
+      "id": "pb0toSrSV",
+      "position": {
+        "x": 575,
+        "y": 0
+      }
+    },
+    {
+      "name": "Dolby Vision profile 4",
+      "sourceRepo": "Community",
+      "pluginName": "comment",
+      "version": "1.0.0",
+      "id": "93P3Lu068",
+      "position": {
+        "x": 205,
+        "y": 575
+      }
+    },
+    {
+      "name": "Dolby Vision profile 5",
+      "sourceRepo": "Community",
+      "pluginName": "comment",
+      "version": "1.0.0",
+      "id": "cyKKMUqhf",
+      "position": {
+        "x": 375,
+        "y": 575
+      }
+    },
+    {
+      "name": "Dolby Vision profile 8",
+      "sourceRepo": "Community",
+      "pluginName": "comment",
+      "version": "1.0.0",
+      "id": "fjOtEv_Tz",
+      "position": {
+        "x": 545,
+        "y": 575
+      }
+    },
+    {
+      "name": "HDR10+",
+      "sourceRepo": "Community",
+      "pluginName": "comment",
+      "version": "1.0.0",
+      "id": "2LUDuTkMH",
+      "position": {
+        "x": 35,
+        "y": 325
+      }
+    },
+    {
+      "name": "Set Container",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandSetContainer",
+      "version": "1.0.0",
+      "inputsDB": {
+        "container": "mp4",
+        "forceConform": "true"
+      },
+      "id": "oT2jV7Qeh",
+      "position": {
+        "x": -60,
+        "y": 710
+      }
+    },
+    {
+      "name": "Check Video Resolution",
+      "sourceRepo": "Community",
+      "pluginName": "checkVideoResolution",
+      "version": "1.0.0",
+      "id": "ffNx4rcGN",
+      "position": {
+        "x": -160,
+        "y": 440
+      }
+    },
+    {
+      "name": "Above 1080p",
+      "sourceRepo": "Community",
+      "pluginName": "comment",
+      "version": "1.0.0",
+      "id": "NKjSvcqmw",
+      "position": {
+        "x": -160,
+        "y": 515
+      }
+    },
+    {
+      "name": "Below 1080p",
+      "sourceRepo": "Community",
+      "pluginName": "comment",
+      "version": "1.0.0",
+      "id": "JHnkAChQz",
+      "position": {
+        "x": -360,
+        "y": 515
+      }
+    },
+    {
+      "name": "Begin Command",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandStart",
+      "version": "1.0.0",
+      "id": "6yAeb0HFm",
+      "position": {
+        "x": 375,
+        "y": 650
+      }
+    },
+    {
+      "name": "Extract HEVC stream",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandExecute",
+      "version": "1.0.0",
+      "inputsDB": {
+        "dryRun": "false"
+      },
+      "id": "YxbKSxKYF",
+      "position": {
+        "x": 375,
+        "y": 830
+      }
+    },
+    {
+      "name": "Extract DoVi RPU",
+      "sourceRepo": "Community",
+      "pluginName": "extractDoViRpu",
+      "version": "1.0.0",
+      "id": "qyC1CF3KV",
+      "position": {
+        "x": 575,
+        "y": 660
+      }
+    },
+    {
+      "name": "Inject DoVi RPU",
+      "sourceRepo": "Community",
+      "pluginName": "injectDoViRpu",
+      "version": "1.0.0",
+      "id": "W5lWKJDc5",
+      "position": {
+        "x": 775,
+        "y": 660
+      }
+    },
+    {
+      "name": "Begin Command",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandStart",
+      "version": "1.0.0",
+      "id": "dq7Sa-nZI",
+      "position": {
+        "x": 575,
+        "y": 710
+      }
+    },
+    {
+      "name": "Transcode video",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandExecute",
+      "version": "1.0.0",
+      "inputsDB": {
+        "dryRun": "false"
+      },
+      "id": "umeCDbEPO",
+      "position": {
+        "x": 575,
+        "y": 890
+      }
+    },
+    {
+      "name": "Set Video Encoder",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandSetVideoEncoder",
+      "version": "1.0.0",
+      "inputsDB": {
+        "hardwareType": "qsv",
+        "ffmpegQuality": "22",
+        "ffmpegPreset": "slow"
+      },
+      "id": "kqQPQPzwt",
+      "position": {
+        "x": 575,
+        "y": 770
+      }
+    },
+    {
+      "name": "Package DoVi mp4",
+      "sourceRepo": "Community",
+      "pluginName": "packageDoViMp4",
+      "version": "1.0.0",
+      "id": "GGJKpY2Mf",
+      "position": {
+        "x": 775,
+        "y": 730
+      }
+    },
+    {
+      "name": "HDR10",
+      "sourceRepo": "Community",
+      "pluginName": "comment",
+      "version": "1.0.0",
+      "id": "DWyizgK51",
+      "position": {
+        "x": 195,
+        "y": 325
+      }
+    },
+    {
+      "name": "Begin Command",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandStart",
+      "version": "1.0.0",
+      "id": "YXp1SH0Lb",
+      "position": {
+        "x": 775,
+        "y": 72.5
+      }
+    },
+    {
+      "name": "Check File Extension",
+      "sourceRepo": "Community",
+      "pluginName": "checkFileExtension",
+      "version": "1.0.0",
+      "inputsDB": {
+        "extensions": "mp4"
+      },
+      "id": "_MFm7PzBx",
+      "position": {
+        "x": -360,
+        "y": 575
+      }
+    },
+    {
+      "name": "Extract Streams",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandExtractStreams",
+      "version": "1.0.0",
+      "id": "YlJG3YOZZ",
+      "position": {
+        "x": 375,
+        "y": 770
+      }
+    },
+    {
+      "name": "Compare File Duration Ratio",
+      "sourceRepo": "Community",
+      "pluginName": "compareFileDurationRatio",
+      "version": "1.0.0",
+      "id": "n6FZBVLGn",
+      "position": {
+        "x": -60,
+        "y": 890
+      }
+    },
+    {
+      "name": "Begin Command",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandStart",
+      "version": "1.0.0",
+      "id": "L2JlTysrK",
+      "position": {
+        "x": 975,
+        "y": 650
+      }
+    },
+    {
+      "name": "Remux into final mp4",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandExecute",
+      "version": "1.0.0",
+      "inputsDB": {
+        "dryRun": "false"
+      },
+      "id": "YON1_Q5CJ",
+      "position": {
+        "x": 975,
+        "y": 830
+      }
+    },
+    {
+      "name": "Set Container",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandSetContainer",
+      "version": "1.0.0",
+      "inputsDB": {
+        "container": "mp4",
+        "forceConform": "true"
+      },
+      "id": "Dzih6-I0p",
+      "position": {
+        "x": 975,
+        "y": 710
+      }
+    },
+    {
+      "name": "Compare File Duration Ratio",
+      "sourceRepo": "Community",
+      "pluginName": "compareFileDurationRatio",
+      "version": "1.0.0",
+      "id": "r2DZZNNv4",
+      "position": {
+        "x": 975,
+        "y": 315
+      }
+    },
+    {
+      "name": "Fail Flow",
+      "sourceRepo": "Community",
+      "pluginName": "failFlow",
+      "version": "1.0.0",
+      "id": "0XxOA09km",
+      "position": {
+        "x": 1075,
+        "y": 400
+      }
+    },
+    {
+      "name": "Fail Flow",
+      "sourceRepo": "Community",
+      "pluginName": "failFlow",
+      "version": "1.0.0",
+      "id": "f3rAv2PlO",
+      "position": {
+        "x": 40,
+        "y": 975
+      }
+    },
+    {
+      "name": "Compare File Duration Ratio",
+      "sourceRepo": "Community",
+      "pluginName": "compareFileDurationRatio",
+      "version": "1.0.0",
+      "id": "NgzO_04SX",
+      "position": {
+        "x": 975,
+        "y": 890
+      }
+    },
+    {
+      "name": "Fail Flow",
+      "sourceRepo": "Community",
+      "pluginName": "failFlow",
+      "version": "1.0.0",
+      "id": "97gN-g54Z",
+      "position": {
+        "x": 35,
+        "y": 515
+      }
+    },
+    {
+      "name": "Remux DoVi MP4",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandRemuxDoviMp4",
+      "version": "1.0.0",
+      "id": "95X4XQD45",
+      "position": {
+        "x": 975,
+        "y": 770
+      }
+    },
+    {
+      "name": "Move Folder Content to Blachole",
+      "sourceRepo": "Community",
+      "pluginName": "moveToBlackhole",
+      "version": "1.0.0",
+      "id": "4XFxqsrs2",
+      "position": {
+        "x": 875,
+        "y": 975
+      }
+    },
+    {
+      "name": "Reorder Streams",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandRorderStreams",
+      "version": "1.0.0",
+      "inputsDB": {
+        "processOrder": "streamTypes",
+        "channels": "",
+        "streamTypes": "audio,subtitle,video"
+      },
+      "id": "wRcpkQFuR",
+      "position": {
+        "x": 375,
+        "y": 710
+      }
+    },
+    {
+      "name": "Fail Flow",
+      "sourceRepo": "Community",
+      "pluginName": "failFlow",
+      "version": "1.0.0",
+      "id": "_tV4NTZlO",
+      "position": {
+        "x": 1075,
+        "y": 975
+      }
+    },
+    {
+      "name": "Parse file with Radarr or Sonarr",
+      "sourceRepo": "Community",
+      "pluginName": "parseFileWithRadarrOrSonarr",
+      "version": "1.0.0",
+      "inputsDB": {
+        "arr": "{{{args.userVariables.library.arr}}}",
+        "arr_host": "{{{args.userVariables.library.arr_host}}}",
+        "arr_api_key": "{{{args.userVariables.library.arr_api_key}}}"
+      },
+      "id": "JwnAlrDzs",
+      "position": {
+        "x": 100,
+        "y": 150
+      }
+    },
+    {
+      "name": "Check TDARR in File Name",
+      "sourceRepo": "Community",
+      "pluginName": "checkFileNameIncludes",
+      "version": "1.0.0",
+      "inputsDB": {
+        "terms": "-TDARR"
+      },
+      "id": "vUXC7f_EP",
+      "position": {
+        "x": 0,
+        "y": 60
+      }
+    },
+    {
+      "name": "File already processed by Tdarr",
+      "sourceRepo": "Community",
+      "pluginName": "comment",
+      "version": "1.0.0",
+      "id": "r9-uBsZVx",
+      "position": {
+        "x": -100,
+        "y": 150
+      }
+    },
+    {
+      "name": "Wait for rename from Radarr or Sonarr",
+      "sourceRepo": "Community",
+      "pluginName": "getNewPathFromRadarrOrSonarr",
+      "version": "1.0.0",
+      "inputsDB": {
+        "arr": "{{{args.userVariables.library.arr}}}",
+        "arr_api_key": "{{{args.userVariables.library.arr_api_key}}}",
+        "arr_host": "{{{args.userVariables.library.arr_host}}}",
+        "path_mapping_from": "{{{args.userVariables.library.path_mapping_from}}}",
+        "path_mapping_to": "{{{args.userVariables.library.path_mapping_to}}}",
+        "retry_limit": "10"
+      },
+      "id": "ocfeuCHBs",
+      "position": {
+        "x": 875,
+        "y": 1035
+      }
+    },
+    {
+      "name": "Remux DoVi MP4",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandRemuxDoviMp4",
+      "version": "1.0.0",
+      "id": "KbofGcQL4",
+      "position": {
+        "x": -60,
+        "y": 770
+      }
+    },
+    {
+      "name": "Begin Command",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandStart",
+      "version": "1.0.0",
+      "id": "_doZbCh0a",
+      "position": {
+        "x": -260,
+        "y": 650
+      }
+    },
+    {
+      "name": "Set Original File",
+      "sourceRepo": "Community",
+      "pluginName": "setOriginalFile",
+      "version": "1.0.0",
+      "id": "MJq51ba7W",
+      "position": {
+        "x": -260,
+        "y": 890
+      }
+    },
+    {
+      "name": "Already <=1080p mp4",
+      "sourceRepo": "Community",
+      "pluginName": "comment",
+      "version": "1.0.0",
+      "id": "lWdGrbTYW",
+      "position": {
+        "x": -460,
+        "y": 650
+      }
+    },
+    {
+      "name": "Remove picture video streams",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandRemoveStreamByProperty",
+      "version": "1.0.0",
+      "inputsDB": {
+        "valuesToRemove": "mjpeg,png"
+      },
+      "id": "OScRuxfDU",
+      "position": {
+        "x": 550,
+        "y": 155
+      }
+    },
+    {
+      "name": "Set Container",
+      "sourceRepo": "Community",
+      "pluginName": "ffmpegCommandSetContainer",
+      "version": "1.0.0",
+      "inputsDB": {
+        "forceConform": "true"
+      },
+      "id": "oTYABk3HY",
+      "position": {
+        "x": 550,
+        "y": 350
+      }
+    },
+    {
+      "name": "Non-HDR",
+      "sourceRepo": "Community",
+      "pluginName": "comment",
+      "version": "1.0.0",
+      "id": "kkoU_GWKU",
+      "position": {
+        "x": 285,
+        "y": 285
+      }
+    },
+    {
+      "name": "On Flow Error",
+      "sourceRepo": "Community",
+      "pluginName": "onFlowError",
+      "version": "1.0.0",
+      "id": "c9vB4nYHW",
+      "position": {
+        "x": -300,
+        "y": 0
+      }
+    },
+    {
+      "name": "Send Web Request",
+      "sourceRepo": "Community",
+      "pluginName": "webRequest",
+      "version": "1.0.0",
+      "inputsDB": {
+        "requestUrl": "https://api.smtp2go.com/v3/email/send",
+        "requestHeaders": "{\n    \"X-Smtp2go-Api-Key\": \"{{{args.userVariables.global.smtp2go_api_key}}}\",\n    \"Content-Type\": \"application/json\",\n    \"accept\": \"application/json\"\n}",
+        "requestBody": "{\n  \"sender\": \"Tdarr <tdarr@{{{args.userVariables.global.email_domain}}}>\",\n  \"to\": [\n    \"{{{args.userVariables.global.email_address}}}\"\n  ],\n  \"subject\": \"Tdarr flow failed\",\n  \"html_body\": \"Flow failed for file: {{{ args.originalLibraryFile._id }}}\"\n}",
+        "method": "post"
+      },
+      "id": "meTrBqDrP",
+      "position": {
+        "x": -300,
+        "y": 60
+      }
+    }
+  ],
+  "flowEdges": [
+    {
+      "source": "C4jauEXGP",
+      "sourceHandle": "1",
+      "target": "93P3Lu068",
+      "targetHandle": null,
+      "id": "fg4kO_f_v"
+    },
+    {
+      "source": "C4jauEXGP",
+      "sourceHandle": "2",
+      "target": "cyKKMUqhf",
+      "targetHandle": null,
+      "id": "fNGyPmi_R"
+    },
+    {
+      "source": "C4jauEXGP",
+      "sourceHandle": "5",
+      "target": "fjOtEv_Tz",
+      "targetHandle": null,
+      "id": "cx0wl4BWw"
+    },
+    {
+      "source": "7HU8CgFuy",
+      "sourceHandle": "2",
+      "target": "2LUDuTkMH",
+      "targetHandle": null,
+      "id": "kKgDQ5Ofe"
+    },
+    {
+      "source": "ffNx4rcGN",
+      "sourceHandle": "4",
+      "target": "JHnkAChQz",
+      "targetHandle": null,
+      "id": "uzuaExSK9"
+    },
+    {
+      "source": "ffNx4rcGN",
+      "sourceHandle": "5",
+      "target": "NKjSvcqmw",
+      "targetHandle": null,
+      "id": "knXd08YiA"
+    },
+    {
+      "source": "ffNx4rcGN",
+      "sourceHandle": "6",
+      "target": "NKjSvcqmw",
+      "targetHandle": null,
+      "id": "8qnlH72Sd"
+    },
+    {
+      "source": "ffNx4rcGN",
+      "sourceHandle": "7",
+      "target": "NKjSvcqmw",
+      "targetHandle": null,
+      "id": "goKs-DXK8"
+    },
+    {
+      "source": "ffNx4rcGN",
+      "sourceHandle": "8",
+      "target": "NKjSvcqmw",
+      "targetHandle": null,
+      "id": "EbFnmJr_w"
+    },
+    {
+      "source": "qyC1CF3KV",
+      "sourceHandle": "1",
+      "target": "dq7Sa-nZI",
+      "targetHandle": null,
+      "id": "Bd35e50bE"
+    },
+    {
+      "source": "7HU8CgFuy",
+      "sourceHandle": "3",
+      "target": "DWyizgK51",
+      "targetHandle": null,
+      "id": "ONXA7X17b"
+    },
+    {
+      "source": "YlJG3YOZZ",
+      "sourceHandle": "1",
+      "target": "YxbKSxKYF",
+      "targetHandle": null,
+      "id": "cPxn4WvJ7"
+    },
+    {
+      "source": "NKjSvcqmw",
+      "sourceHandle": "1",
+      "target": "C4jauEXGP",
+      "targetHandle": null,
+      "id": "hGNYkkLDw"
+    },
+    {
+      "source": "93P3Lu068",
+      "sourceHandle": "1",
+      "target": "6yAeb0HFm",
+      "targetHandle": null,
+      "id": "DIAfqa_ja"
+    },
+    {
+      "source": "cyKKMUqhf",
+      "sourceHandle": "1",
+      "target": "6yAeb0HFm",
+      "targetHandle": null,
+      "id": "xqKj3Im_o"
+    },
+    {
+      "source": "fjOtEv_Tz",
+      "sourceHandle": "1",
+      "target": "6yAeb0HFm",
+      "targetHandle": null,
+      "id": "9z2dUvspu"
+    },
+    {
+      "source": "ffNx4rcGN",
+      "sourceHandle": "3",
+      "target": "JHnkAChQz",
+      "targetHandle": null,
+      "id": "kFjbD0hwM"
+    },
+    {
+      "source": "ffNx4rcGN",
+      "sourceHandle": "2",
+      "target": "JHnkAChQz",
+      "targetHandle": null,
+      "id": "oFeTJE0zu"
+    },
+    {
+      "source": "ffNx4rcGN",
+      "sourceHandle": "1",
+      "target": "JHnkAChQz",
+      "targetHandle": null,
+      "id": "Z5jKxIM1J"
+    },
+    {
+      "source": "BcBpo7Gry",
+      "sourceHandle": "8",
+      "target": "YXp1SH0Lb",
+      "targetHandle": null,
+      "id": "L-1Md0fCV"
+    },
+    {
+      "source": "BcBpo7Gry",
+      "sourceHandle": "7",
+      "target": "YXp1SH0Lb",
+      "targetHandle": null,
+      "id": "ZLBOvaCh7"
+    },
+    {
+      "source": "BcBpo7Gry",
+      "sourceHandle": "6",
+      "target": "YXp1SH0Lb",
+      "targetHandle": null,
+      "id": "UylFLnG_m"
+    },
+    {
+      "source": "BcBpo7Gry",
+      "sourceHandle": "5",
+      "target": "YXp1SH0Lb",
+      "targetHandle": null,
+      "id": "ynW2xdN9i"
+    },
+    {
+      "source": "ffNx4rcGN",
+      "sourceHandle": "9",
+      "target": "JHnkAChQz",
+      "targetHandle": null,
+      "id": "xL3F0vVvA"
+    },
+    {
+      "source": "JHnkAChQz",
+      "sourceHandle": "1",
+      "target": "_MFm7PzBx",
+      "targetHandle": null,
+      "id": "mr8rYh8tu"
+    },
+    {
+      "source": "aYiR8oZ7s",
+      "sourceHandle": "2",
+      "target": "C4jauEXGP",
+      "targetHandle": null,
+      "id": "4oNfNNqSu"
+    },
+    {
+      "source": "aYiR8oZ7s",
+      "sourceHandle": "1",
+      "target": "ffNx4rcGN",
+      "targetHandle": null,
+      "id": "-9TcGBJ1_"
+    },
+    {
+      "source": "DWyizgK51",
+      "sourceHandle": "1",
+      "target": "pb0toSrSV",
+      "targetHandle": null,
+      "id": "F-5NHPeu2"
+    },
+    {
+      "source": "pb0toSrSV",
+      "sourceHandle": "1",
+      "target": "BcBpo7Gry",
+      "targetHandle": null,
+      "id": "S7AlIfitJ"
+    },
+    {
+      "source": "pb0toSrSV",
+      "sourceHandle": "2",
+      "target": "YXp1SH0Lb",
+      "targetHandle": null,
+      "id": "4YWjmnap-"
+    },
+    {
+      "source": "cmgNdYXhi",
+      "sourceHandle": "8",
+      "target": "4ES6r8Zgu",
+      "targetHandle": null,
+      "id": "-zQKpqN3w"
+    },
+    {
+      "source": "cmgNdYXhi",
+      "sourceHandle": "7",
+      "target": "4ES6r8Zgu",
+      "targetHandle": null,
+      "id": "3_TikT5fz"
+    },
+    {
+      "source": "cmgNdYXhi",
+      "sourceHandle": "6",
+      "target": "4ES6r8Zgu",
+      "targetHandle": null,
+      "id": "9IBGihYWk"
+    },
+    {
+      "source": "cmgNdYXhi",
+      "sourceHandle": "5",
+      "target": "4ES6r8Zgu",
+      "targetHandle": null,
+      "id": "-uicGvf7i"
+    },
+    {
+      "source": "dq7Sa-nZI",
+      "sourceHandle": "1",
+      "target": "kqQPQPzwt",
+      "targetHandle": null,
+      "id": "H49nNHlts"
+    },
+    {
+      "source": "GGJKpY2Mf",
+      "sourceHandle": "1",
+      "target": "L2JlTysrK",
+      "targetHandle": null,
+      "id": "rKeJtXsSO"
+    },
+    {
+      "source": "L2JlTysrK",
+      "sourceHandle": "1",
+      "target": "Dzih6-I0p",
+      "targetHandle": null,
+      "id": "TVqNmBqja"
+    },
+    {
+      "source": "paOW2L7U0",
+      "sourceHandle": "1",
+      "target": "r2DZZNNv4",
+      "targetHandle": null,
+      "id": "k22JDVvXz"
+    },
+    {
+      "source": "r2DZZNNv4",
+      "sourceHandle": "2",
+      "target": "0XxOA09km",
+      "targetHandle": null,
+      "id": "Jmn6wYUtu"
+    },
+    {
+      "source": "r2DZZNNv4",
+      "sourceHandle": "3",
+      "target": "0XxOA09km",
+      "targetHandle": null,
+      "id": "KXPlkLF24"
+    },
+    {
+      "source": "n6FZBVLGn",
+      "sourceHandle": "2",
+      "target": "f3rAv2PlO",
+      "targetHandle": null,
+      "id": "n6DS4JDiz"
+    },
+    {
+      "source": "n6FZBVLGn",
+      "sourceHandle": "3",
+      "target": "f3rAv2PlO",
+      "targetHandle": null,
+      "id": "bB310wF90"
+    },
+    {
+      "source": "2LUDuTkMH",
+      "sourceHandle": "1",
+      "target": "97gN-g54Z",
+      "targetHandle": null,
+      "id": "HYHn5t0Sh"
+    },
+    {
+      "source": "C4jauEXGP",
+      "sourceHandle": "3",
+      "target": "97gN-g54Z",
+      "targetHandle": null,
+      "id": "PLUr1WwOd"
+    },
+    {
+      "source": "C4jauEXGP",
+      "sourceHandle": "4",
+      "target": "97gN-g54Z",
+      "targetHandle": null,
+      "id": "gTBWX6LRt"
+    },
+    {
+      "source": "Dzih6-I0p",
+      "sourceHandle": "1",
+      "target": "95X4XQD45",
+      "targetHandle": null,
+      "id": "QzTfetVKQ"
+    },
+    {
+      "source": "95X4XQD45",
+      "sourceHandle": "1",
+      "target": "YON1_Q5CJ",
+      "targetHandle": null,
+      "id": "_L7oCNw9d"
+    },
+    {
+      "source": "YON1_Q5CJ",
+      "sourceHandle": "1",
+      "target": "NgzO_04SX",
+      "targetHandle": null,
+      "id": "OiKOYokeQ"
+    },
+    {
+      "source": "kqQPQPzwt",
+      "sourceHandle": "1",
+      "target": "FgNlilaNK",
+      "targetHandle": null,
+      "id": "FJF8RN80S"
+    },
+    {
+      "source": "FgNlilaNK",
+      "sourceHandle": "1",
+      "target": "umeCDbEPO",
+      "targetHandle": null,
+      "id": "mcuctypDg"
+    },
+    {
+      "source": "6yAeb0HFm",
+      "sourceHandle": "1",
+      "target": "wRcpkQFuR",
+      "targetHandle": null,
+      "id": "OnHodCBkJ"
+    },
+    {
+      "source": "wRcpkQFuR",
+      "sourceHandle": "1",
+      "target": "YlJG3YOZZ",
+      "targetHandle": null,
+      "id": "-wXXjCspG"
+    },
+    {
+      "source": "NgzO_04SX",
+      "sourceHandle": "3",
+      "target": "_tV4NTZlO",
+      "targetHandle": null,
+      "id": "aFI_1S4Jc"
+    },
+    {
+      "source": "NgzO_04SX",
+      "sourceHandle": "2",
+      "target": "_tV4NTZlO",
+      "targetHandle": null,
+      "id": "_ydlha_4C"
+    },
+    {
+      "source": "vUXC7f_EP",
+      "sourceHandle": "1",
+      "target": "r9-uBsZVx",
+      "targetHandle": null,
+      "id": "FMPPhPlrG"
+    },
+    {
+      "source": "oT2jV7Qeh",
+      "sourceHandle": "1",
+      "target": "KbofGcQL4",
+      "targetHandle": null,
+      "id": "EsdSrRcos"
+    },
+    {
+      "source": "KbofGcQL4",
+      "sourceHandle": "1",
+      "target": "NihL5hVxi",
+      "targetHandle": null,
+      "id": "uSqvg4wNr"
+    },
+    {
+      "source": "YegnE9Sfq",
+      "sourceHandle": "1",
+      "target": "oT2jV7Qeh",
+      "targetHandle": null,
+      "id": "ExLpfRywr"
+    },
+    {
+      "source": "_MFm7PzBx",
+      "sourceHandle": "2",
+      "target": "_doZbCh0a",
+      "targetHandle": null,
+      "id": "C7PxwBopf"
+    },
+    {
+      "source": "_doZbCh0a",
+      "sourceHandle": "1",
+      "target": "fYdl-BYLn",
+      "targetHandle": null,
+      "id": "DLbC8JoCJ"
+    },
+    {
+      "source": "fYdl-BYLn",
+      "sourceHandle": "1",
+      "target": "0XsjGCiI6",
+      "targetHandle": null,
+      "id": "Z5T_LP8s1"
+    },
+    {
+      "source": "0XsjGCiI6",
+      "sourceHandle": "1",
+      "target": "EA90IGB3e",
+      "targetHandle": null,
+      "id": "e28swu8qj"
+    },
+    {
+      "source": "EA90IGB3e",
+      "sourceHandle": "1",
+      "target": "MJq51ba7W",
+      "targetHandle": null,
+      "id": "LwX7YxuIy"
+    },
+    {
+      "source": "MJq51ba7W",
+      "sourceHandle": "1",
+      "target": "YegnE9Sfq",
+      "targetHandle": null,
+      "id": "bcup6cX1f"
+    },
+    {
+      "source": "_MFm7PzBx",
+      "sourceHandle": "1",
+      "target": "lWdGrbTYW",
+      "targetHandle": null,
+      "id": "HTlVdLV9f"
+    },
+    {
+      "source": "Zuta3rYPA",
+      "sourceHandle": "1",
+      "target": "ceZJOp83R",
+      "targetHandle": null,
+      "id": "Ca4J-2_jI"
+    },
+    {
+      "source": "YXp1SH0Lb",
+      "sourceHandle": "1",
+      "target": "OScRuxfDU",
+      "targetHandle": null,
+      "id": "6ODP3WtGs"
+    },
+    {
+      "source": "OScRuxfDU",
+      "sourceHandle": "1",
+      "target": "Zuta3rYPA",
+      "targetHandle": null,
+      "id": "N4LrJuYHV"
+    },
+    {
+      "source": "4ES6r8Zgu",
+      "sourceHandle": "1",
+      "target": "paOW2L7U0",
+      "targetHandle": null,
+      "id": "vBwFqd47e"
+    },
+    {
+      "source": "cmgNdYXhi",
+      "sourceHandle": "9",
+      "target": "paOW2L7U0",
+      "targetHandle": null,
+      "id": "DntUzjX03"
+    },
+    {
+      "source": "cmgNdYXhi",
+      "sourceHandle": "4",
+      "target": "paOW2L7U0",
+      "targetHandle": null,
+      "id": "ZSr5qRTM1"
+    },
+    {
+      "source": "cmgNdYXhi",
+      "sourceHandle": "3",
+      "target": "paOW2L7U0",
+      "targetHandle": null,
+      "id": "udzosxzD2"
+    },
+    {
+      "source": "cmgNdYXhi",
+      "sourceHandle": "2",
+      "target": "paOW2L7U0",
+      "targetHandle": null,
+      "id": "kR6btBTGc"
+    },
+    {
+      "source": "cmgNdYXhi",
+      "sourceHandle": "1",
+      "target": "paOW2L7U0",
+      "targetHandle": null,
+      "id": "XNGDiW9zI"
+    },
+    {
+      "source": "oTYABk3HY",
+      "sourceHandle": "1",
+      "target": "cmgNdYXhi",
+      "targetHandle": null,
+      "id": "mG-YkFApX"
+    },
+    {
+      "source": "ceZJOp83R",
+      "sourceHandle": "1",
+      "target": "oTYABk3HY",
+      "targetHandle": null,
+      "id": "d5zdmA-ce"
+    },
+    {
+      "source": "NihL5hVxi",
+      "sourceHandle": "1",
+      "target": "n6FZBVLGn",
+      "targetHandle": null,
+      "id": "xAs8cKiAG"
+    },
+    {
+      "source": "JwnAlrDzs",
+      "sourceHandle": "1",
+      "target": "7HU8CgFuy",
+      "targetHandle": null,
+      "id": "6C1XaQr_e"
+    },
+    {
+      "source": "jrhVhsk78",
+      "sourceHandle": "1",
+      "target": "DRYCV7pIm",
+      "targetHandle": null,
+      "id": "BJYNzcnz9"
+    },
+    {
+      "source": "4XFxqsrs2",
+      "sourceHandle": "1",
+      "target": "ocfeuCHBs",
+      "targetHandle": null,
+      "id": "ti450RilL"
+    },
+    {
+      "source": "uJQ09R2eT",
+      "sourceHandle": "1",
+      "target": "j-aCKeAwm",
+      "targetHandle": null,
+      "id": "ti_QUt8xl"
+    },
+    {
+      "source": "7HU8CgFuy",
+      "sourceHandle": "1",
+      "target": "8CWcFNnPm",
+      "targetHandle": null,
+      "id": "X1qlC8it7"
+    },
+    {
+      "source": "8CWcFNnPm",
+      "sourceHandle": "1",
+      "target": "aYiR8oZ7s",
+      "targetHandle": null,
+      "id": "vh6sOWrjc"
+    },
+    {
+      "source": "umeCDbEPO",
+      "sourceHandle": "1",
+      "target": "W5lWKJDc5",
+      "targetHandle": null,
+      "id": "Sf9MbLCXD"
+    },
+    {
+      "source": "W5lWKJDc5",
+      "sourceHandle": "1",
+      "target": "GGJKpY2Mf",
+      "targetHandle": null,
+      "id": "QSZFCOTu4"
+    },
+    {
+      "source": "7HU8CgFuy",
+      "sourceHandle": "4",
+      "target": "kkoU_GWKU",
+      "targetHandle": null,
+      "id": "mnEYejN2R"
+    },
+    {
+      "source": "kkoU_GWKU",
+      "sourceHandle": "1",
+      "target": "pb0toSrSV",
+      "targetHandle": null,
+      "id": "bRdkPppjE"
+    },
+    {
+      "source": "YxbKSxKYF",
+      "sourceHandle": "1",
+      "target": "qyC1CF3KV",
+      "targetHandle": null,
+      "id": "Vhg4mXcgJ"
+    },
+    {
+      "source": "n6FZBVLGn",
+      "sourceHandle": "1",
+      "target": "jrhVhsk78",
+      "targetHandle": null,
+      "id": "q7IXM9TJL"
+    },
+    {
+      "source": "NgzO_04SX",
+      "sourceHandle": "1",
+      "target": "4XFxqsrs2",
+      "targetHandle": null,
+      "id": "w5C8rgKTd"
+    },
+    {
+      "source": "r2DZZNNv4",
+      "sourceHandle": "1",
+      "target": "uJQ09R2eT",
+      "targetHandle": null,
+      "id": "RXlOF8ox4"
+    },
+    {
+      "source": "c9vB4nYHW",
+      "sourceHandle": "1",
+      "target": "meTrBqDrP",
+      "targetHandle": null,
+      "id": "q5Ce3v763"
+    },
+    {
+      "source": "DRYCV7pIm",
+      "sourceHandle": "2",
+      "target": "tMLsDToJZ",
+      "targetHandle": null,
+      "id": "k3df5l48T"
+    },
+    {
+      "source": "ocfeuCHBs",
+      "sourceHandle": "2",
+      "target": "bQ4MvF9yF",
+      "targetHandle": null,
+      "id": "aXKmfrPys"
+    },
+    {
+      "source": "j-aCKeAwm",
+      "sourceHandle": "2",
+      "target": "FY_GvlJx8",
+      "targetHandle": null,
+      "id": "ySjiFwi4R"
+    },
+    {
+      "source": "x7dGKwQc7",
+      "sourceHandle": "1",
+      "target": "vUXC7f_EP",
+      "targetHandle": null,
+      "id": "GPRhjZIer"
+    },
+    {
+      "source": "vUXC7f_EP",
+      "sourceHandle": "2",
+      "target": "JwnAlrDzs",
+      "targetHandle": null,
+      "id": "Fvf1ILSAt"
+    }
+  ]
+}
